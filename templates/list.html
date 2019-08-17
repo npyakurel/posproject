@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'fcrudapp:home' %}">Back to home</a>
+<table class="table table-bordered">
+	<thead>
+		<th>Title</th>
+		<th>Pages</th>
+		<th>Activity</th>
+	</thead>
+	<tbody>
+		<a href="{% url 'fcrudapp:add' %}">add</a>
+		{% for b in book %}
+		<tr>
+			<td>{{b.title}}</td>
+			<td>{{b.pages}}</td>
+			<td>
+				<a href="{% url 'fcrudapp:update' b.id %}">Update</a>
+				<a href="{% url 'fcrudapp:delete' b.id %}">Delete</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+
+</table>
+{% endblock %}
